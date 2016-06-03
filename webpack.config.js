@@ -5,6 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var NODE_ENV = process.env.NODE_ENV || "development";
 var _productionBuild = JSON.stringify(NODE_ENV) === '"production"';
 var env_API_URL = _productionBuild ? "api" : "http://draft/Branches/ProtoReactPortlet/api";
+var ExtractLESS = new ExtractTextPlugin('./Source/styles/main.less');
 
 var vendor_libraries = [
     'jquery',
@@ -23,11 +24,12 @@ var vendor_libraries = [
 
 var _plugins = [];
 var _commonPlugins = [
+    new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         'env_API_URL': JSON.stringify(env_API_URL)
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', '../../../_Resources/Web/scripts/portlet_vendor/vendor.bundle.js')
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor/vendor.bundle.js')
 ];
 
 var _devPlugins = [
@@ -56,12 +58,13 @@ module.exports = {
     },
     root: path.resolve('./'),
     output: {
-        path: path.resolve(__dirname, '../Built'),
+        path: path.resolve(__dirname, './Built/'),
+        publicPath: '/Built/',
         filename: '[name]/[name].js',
         hash: true
     },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.css', '.ts', '.tsx']
+        extensions: ['', '.js', '.jsx', '.css', '.ts', '.tsx', '.css', '.less']
     },
     module: {
         loaders: [{
@@ -76,10 +79,10 @@ module.exports = {
             loader: "file?name=[name].[ext]"
         }, {
             test: /\.css$/,
-            loader: "style-loader!css-loader"
+            loader: "css"
         }, {
             test: /\.less$/,
-            loader: "style-loader!css-raw-loader!less-loader"
+            loader: "style!css!less"
         }, {
             test: /\.png$/,
             loader: "url-loader?limit=10000&minetype=image/png"
@@ -87,11 +90,6 @@ module.exports = {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
             loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
         }]
-    },
-    devServer: {
-        noInfo: true,
-        inline: true,
-        contentBase: '../Built/'
     },
     plugins: _plugins.concat(_commonPlugins),
     stats: {
