@@ -1,0 +1,9 @@
+{
+   "presets": ["es2015"],
+   "plugins": [
+      "transform-react-jsx",
+      "transform-decorators-legacy",
+      "transform-function-bind",
+      "transform-object-rest-spread"
+   ]
+}

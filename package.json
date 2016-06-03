@@ -1,0 +1,78 @@
+{
+  "name": "storyes",
+  "version": "1.0.0",
+  "description": "pckjs config",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "typescript": "*",
+    "babel-core": "*",
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-plugin-transform-function-bind": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "babel-plugin-transform-react-jsx": "*",
+    "babel-preset-es2015": "*",
+    
+    "babel-loader": "*",
+    "ts-loader": "*",
+    "css-loader": "*",
+    "css-raw-loader": "*",
+    "style-loader": "*",
+    
+    "classnames": "*",
+    "jquery": "*",
+    "lodash": "*",
+    "moment": "*",
+    
+    "redux": "*",
+    "redux-actions": "*",
+    "redux-saga": "*",
+    "redux-thunk": "*",
+    
+    "react": "*",
+    "react-dom": "*",
+    "react-motion": "*",
+    "react-notification-system": "*",
+    "react-redux": "*",
+    "react-router": "*",
+    "history": "*",
+    
+    "express": "*",
+    "express-favicon": "*",
+    "body-parser": "*",
+    "winston": "*",
+    "mongoose": "*",
+    "multer": "*",
+    "nconf": "*"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-plugin-transform-function-bind": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "babel-plugin-transform-react-jsx": "*",
+    "babel-preset-es2015": "*",
+    "css-raw-loader": "*",
+    "file-loader": "*",
+    "html-webpack-plugin": "*",
+    "extract-text-webpack-plugin": "*",
+    "less": "*",
+    "less-loader": "*",
+    "react-addons-css-transition-group": "*",
+    "style-loader": "*",
+    "url-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "scripts": {
+    "webpack_watch": "set NODE_ENV=development&& webpack --watch",
+    "webpack_watch_prod": "set NODE_ENV=production&& webpack --watch",
+    "webpack_prod": "set NODE_ENV=production&& webpack",
+    "server": "node Source/scripts/server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "draft",
+  "license": "ISC",
+  "homepage": ""
+}
