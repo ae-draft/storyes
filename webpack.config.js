@@ -73,7 +73,7 @@ module.exports = {
             loaders: ["babel-loader"]
         }, {
             test: /\.ts(x?)$/,
-            loader: 'ts-loader'
+            loader: 'babel-loader!ts-loader'
         }, {
             test: /\.html$/,
             loader: "file?name=[name].[ext]"

@@ -1,10 +1,7 @@
 import App from './components/App';
 import {AppError} from './components/stateless/stateless-components';
-import {initApp, renderApp} from './bootstrap/bootstrap';
+import BootstrapApp from './bootstrap/bootstrap';
+import { routes } from './bootstrap/routes';
+const render_holder = 'content';
 
-initApp()
-	.then(() => renderApp(App))
-	.catch(exception => {
-		console.error("exception--->", exception);
-		renderApp(AppError);
-	});
+new BootstrapApp(render_holder, routes, App, AppError).initApp();
